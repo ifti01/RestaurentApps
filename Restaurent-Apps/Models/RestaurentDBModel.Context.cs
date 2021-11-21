@@ -9,6 +9,7 @@
 
 namespace Restaurent_Apps
 {
+    using Restaurent_Apps.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
