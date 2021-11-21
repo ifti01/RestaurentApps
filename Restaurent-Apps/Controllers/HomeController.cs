@@ -10,6 +10,7 @@ namespace Restaurent_Apps.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
 
