@@ -17,11 +17,11 @@ namespace Restaurent_Apps.Repositories
         public IEnumerable<SelectListItem> GetAllCustomers()
         {
             var objSelectListItems = new List<SelectListItem>();
-            objSelectListItems = (from obj in objRestaurantDbEntities.PaymentTypes
+            objSelectListItems = (from obj in objRestaurantDbEntities.Customers
                 select new SelectListItem()
                 {
-                    Text = obj.PaymentTypeName,
-                    Value = obj.PaymentTypeId.ToString(),
+                    Text = obj.CustomerName,
+                    Value = obj.CustomerId.ToString(),
                     Selected = true,
 
                 }).ToList();

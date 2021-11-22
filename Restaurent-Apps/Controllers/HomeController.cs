@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Restaurent_Apps.Repositories;
 
 namespace Restaurent_Apps.Controllers
 {
@@ -10,8 +12,15 @@ namespace Restaurent_Apps.Controllers
     {
         public ActionResult Index()
         {
-            
-            return View();
+            CustomerRepository objCustomerRepository = new CustomerRepository();
+            ItemRepository objItemRepository = new ItemRepository();
+            PaymentRepository objPaymentRepository = new PaymentRepository();
+
+            var objMultipleModels = new Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>,IEnumerable<SelectListItem>>
+                (objCustomerRepository.GetAllCustomers(),objItemRepository.GetAllItems(),objPaymentRepository.GetAllPayment());
+
+
+            return View(objMultipleModels);
         }
 
         public ActionResult About()
