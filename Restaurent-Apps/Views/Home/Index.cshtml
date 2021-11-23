@@ -5,6 +5,35 @@
     ViewBag.Title = "Home Page";
 }
 
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        $("#Item").change(function () {
+            debugger 
+            var itemId = $("#Item").val();
+            GetItemUnitPrice(itemId);
+        });
+    });
+
+    function GetItemUnitPrice(itemId) {
+        $.ajax({
+            async: true,
+            type: 'GET',
+            dataType: 'JSON',
+            contentType: 'application/json; charset= utf-8',
+            data: { itemId: itemId },
+            url: '@Url.Action("getItemUnitPrice", "Home")',
+            success: function (data) {
+                $("#txtUnitPrice").val(parseFloat(data).toFixed(2));
+            },
+            error:function (){
+                alert("Problem Occured");
+            }
+    });
+    }
+</script>
 <fieldset>
     <legend>
         Restaurant

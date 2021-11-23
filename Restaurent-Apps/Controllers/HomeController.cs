@@ -10,6 +10,11 @@ namespace Restaurent_Apps.Controllers
 {
     public class HomeController : Controller
     {
+        private RestaurantDBEntities objRestaurantDbEntities;
+        public HomeController()
+        {
+            objRestaurantDbEntities = new RestaurantDBEntities();
+        }
         public ActionResult Index()
         {
             CustomerRepository objCustomerRepository = new CustomerRepository();
@@ -23,11 +28,11 @@ namespace Restaurent_Apps.Controllers
             return View(objMultipleModels);
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public JsonResult getItemUnitPrice(int itemId)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            decimal UnitPrice = objRestaurantDbEntities.Items.Single(model => model.ItemId == itemId).ItemPrice;
+            return Json(UnitPrice,JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Contact()
