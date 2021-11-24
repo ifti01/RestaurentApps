@@ -22,7 +22,7 @@ namespace Restaurent_Apps.Repositories
                 {
                     Text = obj.ItemName,
                     Value = obj.ItemId.ToString(),
-                    Selected = true,
+                    Selected = false,
 
                 }).ToList();
 

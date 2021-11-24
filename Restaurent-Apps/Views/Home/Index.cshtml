@@ -9,13 +9,30 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
+        $("#Item").val(0);
         $("#Item").change(function () {
             debugger 
             var itemId = $("#Item").val();
             GetItemUnitPrice(itemId);
         });
+
+        $("input[type=text]").change(function () {
+            debugger 
+            CalculateSubTotal();
+        });
+
     });
+
+    function CalculateSubTotal() {
+        var UnitPrice = $("#txtUnitPrice").val();
+        var Quantity = $("#txtQuantity").val();
+        var Discount = $("#txtDiscount").val();
+
+        var Total = (UnitPrice * Quantity) - Discount;
+
+        $("#txtTotal").val(parseFloat(Total).toFixed(2));
+    }
 
     function GetItemUnitPrice(itemId) {
         $.ajax({
