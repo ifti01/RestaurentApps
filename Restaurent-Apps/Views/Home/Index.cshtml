@@ -18,13 +18,10 @@
         });
 
         $("input[type=text]").change(function () {
-
             CalculateSubTotal();
         });
 
-        
         $("input[type=text]").change(function () {
-
             CalculateBalance();
         });
 
@@ -47,12 +44,9 @@
         }
     }
 
-
     function RemoveItem(itemId) {
         $(itemId).closest('tr').remove();
     }
-
-
 
     function AddToTheItemList() {
         var tblItemList = $("#tblRestaurantItemList");
@@ -82,7 +76,6 @@
         FinalItemTotal();
         ResetItem();
     }
-
 
     function FinalItemTotal() {
         $("#txtFinalTotal").val("0.00");
